@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Job Application</title>
+</head>
+<body>
+    <h1>Add Job Application</h1>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Save Application</button>
+    </form>
+
+    <a href="/">Back to Applications</a>
+</body>
+</html>

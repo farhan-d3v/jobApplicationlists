@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+</head>
+<body>
+
+    <h1>Job Application Tracker</h1>
+    <h2><a href="{%url 'add_application' %}">Add Jobs</a></h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Comapany Name</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in company %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.company_name}}</td>
+                    <td>{{item.job_role}}</td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.application_date}}</td>
+                    <td><a href="{% url 'edit_application' item.id %}">Edit</a>
+                    <a href="{% url 'delete_application' item.id%}">Delete</a>
+                    </td>
+                 </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6"> didnt found! </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
